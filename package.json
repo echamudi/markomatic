@@ -1,0 +1,19 @@
+{
+  "name": "markomatic",
+  "version": "0.0.1",
+  "description": "Generate Markdown files using templates and YAML",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ezhmd@github.com/ezhmd/markomatic.git"
+  },
+  "author": "Ezzat Chamudi",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/ezhmd/markomatic/issues"
+  },
+  "homepage": "https://github.com/ezhmd/markomatic#readme"
+}
