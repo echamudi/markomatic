@@ -1,7 +1,7 @@
 {
   "name": "markomatic",
-  "version": "0.0.1",
-  "description": "Generate Markdown files using templates and YAML",
+  "version": "0.0.2",
+  "description": "(WIP) Generate Markdown files using templates and YAML configuration",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ezhmd/markomatic/issues"
   },
-  "homepage": "https://github.com/ezhmd/markomatic#readme"
+  "homepage": "https://github.com/ezhmd/markomatic#readme",
+  "dependencies": {
+    "js-yaml": "^3.13.1"
+  }
 }

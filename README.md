@@ -1,2 +1,3 @@
 # markomatic
-Generate Markdown files using templates and YAML
+
+(WIP) Generate Markdown files using templates and YAML
