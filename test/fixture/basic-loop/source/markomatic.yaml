@@ -1,0 +1,10 @@
+markomatic :
+  version : 1
+  entry : './template.md'
+  output : './basic-case.md'
+  variables:
+    fruits : 
+      - Apple
+      - Orange
+      - Pear
+      - Avocado
