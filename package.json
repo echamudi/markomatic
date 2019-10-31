@@ -18,5 +18,6 @@
   "homepage": "https://github.com/ezhmd/markomatic#readme",
   "dependencies": {
     "js-yaml": "^3.13.1"
-  }
+  },
+  "devDependencies": {}
 }
