@@ -32,9 +32,9 @@ content
 
 template
     : '{>' TEXT '}'
-        { $$ = { k: 'command', v: $2, d: @$} }
-    | '<!--' TEXT '-->'
-        { $$ = { k: 'switch', v: $2, d: @$} }
+        { $$ = { k: 'tool', v: $2, d: @$} }
     | '{=' TEXT '}'
         { $$ = { k: 'print', v: $2, d: @$} }
+    | '<!--' TEXT '-->'
+        { $$ = { k: 'comment', v: $2, d: @$} }
     ;
