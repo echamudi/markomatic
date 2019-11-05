@@ -1,3 +1,3 @@
-# {= project_name }
+# {{ project_name }}
 
-This is {= project_name } example
+This is {{ project_name }} example
