@@ -4,7 +4,7 @@
   "description": "(WIP - Experimental) Generate Markdown files using partial templates and YAML configuration",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test/test.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/ezhmd/markomatic#readme",
   "dependencies": {
-    "jison": "^0.4.18",
-    "js-yaml": "^3.13.1"
+    "js-yaml": "^3.13.1",
+    "nunjucks": "^3.2.0"
   },
   "devDependencies": {
     "mocha": "^6.2.2"
