@@ -20,5 +20,7 @@
     "jison": "^0.4.18",
     "js-yaml": "^3.13.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  }
 }
