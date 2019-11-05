@@ -1,7 +1,8 @@
 markomatic :
   version : 1
-  entry : './template.md'
-  output : './basic-case.md'
+  sourceFolder: '.'
+  entryFile : './template.md'
+  outputFile : './basic-loop.md'
   variables:
     fruits : 
       - Apple
