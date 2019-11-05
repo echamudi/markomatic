@@ -2,6 +2,6 @@
 
 My favorite fruits are
 
-{{ each fruits as fruit }}
+{{ each fruit of fruits }}
 - {{ fruit }}
 {{ end each }}
