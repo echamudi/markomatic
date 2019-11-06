@@ -4,7 +4,7 @@
   "description": "(WIP - Experimental) Generate Markdown files using partial templates and YAML configuration",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/test.js"
+    "test": "cd test && mocha ./test.js"
   },
   "repository": {
     "type": "git",

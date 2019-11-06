@@ -5,7 +5,6 @@
 // cd ./test/fixture/basic-variable/source
 // markomatic ./markomatic.yaml
 
-
 const markomatic = require('.');
 const path = require('path');
 
