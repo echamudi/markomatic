@@ -42,4 +42,14 @@ describe('Markomatic!', function () {
         execSync('cd ./fixture/complete-test/source/ && markomatic markomatic.yaml', execSyncProp);
         assert.deepStrictEqual(fs.readFileSync('./fixture/complete-test/expected/result.md'), fs.readFileSync('./result/complete-test.md'));
     });
+
+    describe('Yaml completion test', function() {
+        it('throws error when the config doesn\'t contain markomatic prop', function() {
+            assert.throws(() => {
+                markomatic('./fixture/no-markomatic-prop/config.yaml');
+            },
+                new Error('The provided yaml file doesn\'t have markomatic property.')
+            );
+        });
+    })
 });
