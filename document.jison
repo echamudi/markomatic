@@ -1,3 +1,4 @@
+/* description: Parses words out of html, ignoring html in the parse, but returning it in the end */
 
 /* lexical grammar */
 %lex
@@ -5,7 +6,7 @@
 "{>"(.|\n)*?"}"                 return 'TAG_command'
 "{="(.|\n)*?"}"                 return 'TAG_print'
 "<!--"(.|\n)*?"-->"             return 'TAG_comment'
-[^\{^\}^\<^\>^\-^\!]+		return 'WORD'
+[^\{^\}^\=^\<^\>^\-^\!]+		return 'WORD'
 (.|\n)				return 'CHAR'
 <<EOF>>				return 'EOF'
 
