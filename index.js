@@ -3,17 +3,24 @@ const yaml = require('js-yaml');
 const nunjucks = require('nunjucks');
 const path = require('path');
 
-module.exports = function (yamlPath) {
-    const yamlDir = path.dirname(yamlPath);
+module.exports = function (yamlFilePath) {
+    const yamlDir = path.dirname(yamlFilePath);
 
-    const doc = yaml.safeLoad(fs.readFileSync(yamlPath, 'utf8'));
+    console.log(yamlFilePath);
 
-    const templatePath = path.join(yamlDir, doc.markomatic.template);
-    const outputPath   = path.join(yamlDir, doc.markomatic.output);
+    const yamlObject = yaml.safeLoad(fs.readFileSync(yamlFilePath, 'utf8'));
 
-    const templateText = fs.readFileSync(templatePath, 'utf8');
+    const templateFilePath = path.join(yamlDir, yamlObject.markomatic.template);
+    const templateDir = path.dirname(templateFilePath);
+    const outputFilePath   = path.join(yamlDir, yamlObject.markomatic.output);
+    const outputDir = path.dirname(outputFilePath);
 
-    const res = nunjucks.renderString(templateText, doc.markomatic.variables);
+    const templateText = fs.readFileSync(templateFilePath, 'utf8');
 
-    return res;
+    const renderedText = nunjucks.renderString(templateText, yamlObject.markomatic.variables);
+
+    fs.mkdirSync(outputDir, { recursive: true });
+    fs.writeFileSync(outputFilePath, renderedText);
+
+    return renderedText;
 }
