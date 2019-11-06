@@ -8,6 +8,9 @@ module.exports = function (yamlFilePath) {
 
     const yamlObject = yaml.safeLoad(fs.readFileSync(yamlFilePath, 'utf8'));
 
+    // Check yaml validity
+    if (yamlObject.markomatic === undefined) throw new Error('The provided yaml file doesn\'t have markomatic property.');
+
     const inputFilePath = path.join(yamlDir, yamlObject.markomatic.input);
     const inputFileName = path.parse(inputFilePath).base;
     const inputDir = path.dirname(inputFilePath);
