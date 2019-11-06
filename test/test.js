@@ -6,10 +6,17 @@ const assert = require('assert');
 const markomatic = require('../index');
 
 describe('Markomatic!', function () {
+
+    this.beforeEach(function () {
+        // Make sure there's no previous result
+        if (fs.existsSync('./result/complete-test.md')) {
+            fs.unlinkSync('./result/complete-test.md');
+        }
+    });
+
     it('extracts correctly using markomatic as node module', function () {
         markomatic('./fixture/complete-test/source/markomatic.yaml');
         assert.deepStrictEqual(fs.readFileSync('./fixture/complete-test/expected/result.md'), fs.readFileSync('./result/complete-test.md'));
-        fs.unlinkSync('./result/complete-test.md');
     });
 
     it('extracts correctly using markomatic as cli tool', function () {
@@ -22,7 +29,15 @@ describe('Markomatic!', function () {
 
         execSync('markomatic ./fixture/complete-test/source/markomatic.yaml', execSyncProp);
         assert.deepStrictEqual(fs.readFileSync('./fixture/complete-test/expected/result.md'), fs.readFileSync('./result/complete-test.md'));
-        fs.unlinkSync('./result/complete-test.md');
+    });
+
+    it('extracts correctly using markomatic as cli tool (2)', function () {
+        // const os = process.platform;
+        /** @type {any} */
+        const execSyncProp = {
+            timeout: 60000,
+            stdio: 'inherit',
+        };
 
         execSync('cd ./fixture/complete-test/source/ && markomatic markomatic.yaml', execSyncProp);
         assert.deepStrictEqual(fs.readFileSync('./fixture/complete-test/expected/result.md'), fs.readFileSync('./result/complete-test.md'));
