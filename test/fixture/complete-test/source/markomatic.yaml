@@ -7,7 +7,7 @@ markomatic :
   input: ./ezzat-chamudi.md
   output : ../../../result/complete-test.md
   variables :
-    name : John Doe
+    name : Ezzat
     fruits :
       - Apple
       - Orange
