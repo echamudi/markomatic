@@ -1,6 +1,0 @@
-markomatic :
-  version : 1
-  template: './template.md'
-  output : '../../../result/basic-variable.md'
-  variables :
-    project_name : Project Name

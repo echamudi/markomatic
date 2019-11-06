@@ -1,0 +1,35 @@
+markomatic :
+  version : 1
+
+  # All directories and file paths are relative to yaml file
+  templateDirs : 
+    - ./partials
+  input: ./ezzat-chamudi.md
+  output : ../../../result/complete-test.md
+  variables :
+    name : John Doe
+    fruits :
+      - Apple
+      - Orange
+      - Avocado
+      - Ko'al
+    me: |
+      Hey,
+
+      This is something about `me`.
+      ```js
+      console.log('and this is a code')
+      ```
+      ```html
+      <!-- This is angular example -->
+      <div class="name">
+        I'm {{ name }}
+      </div>
+      ```
+
+      ## Subsection
+
+      This is subsection inside about me
+    likeIceCream: true
+    likeChocolate: false
+    goodbye: Bye! See you later!
