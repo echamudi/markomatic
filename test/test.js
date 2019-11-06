@@ -10,8 +10,8 @@ const sources = [
 describe('Extract correctly', function () {
     sources.forEach((source) => {
         it(`passes correctly for ${source}`, function () {
-            console.log(source);
-            markomatic(source);
+            let result = markomatic(source);
+            console.log(result);
         });
     });
 });
