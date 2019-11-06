@@ -2,7 +2,7 @@
 
 My favorite fruits are
 
-- Apple
-- Orange
-- Pear
-- Avocado
+  - Apple
+  - Orange
+  - Pear
+  - Avocado
