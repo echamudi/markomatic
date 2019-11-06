@@ -6,8 +6,6 @@ const path = require('path');
 module.exports = function (yamlFilePath) {
     const yamlDir = path.dirname(yamlFilePath);
 
-    console.log(yamlFilePath);
-
     const yamlObject = yaml.safeLoad(fs.readFileSync(yamlFilePath, 'utf8'));
 
     const templateFilePath = path.join(yamlDir, yamlObject.markomatic.template);
