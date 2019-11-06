@@ -63,3 +63,6 @@ typings/
 
 # Quick test file
 /playground.js
+
+# test result folder
+/test/result
