@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/ezhmd/markomatic/issues"
   },
+  "bin": "cli.js",
   "homepage": "https://github.com/ezhmd/markomatic#readme",
   "dependencies": {
     "js-yaml": "^3.13.1",
