@@ -1,7 +1,6 @@
 markomatic :
   version : 1
-  sourceFolder: '.'
-  entryFile : './template.md'
-  outputFile : './basic-case.md'
+  template: './template.md'
+  output : '../../../result/basic-variable.md'
   variables :
     project_name : Project Name
