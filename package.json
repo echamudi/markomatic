@@ -1,7 +1,7 @@
 {
   "name": "markomatic",
   "version": "0.1.0",
-  "description": "Generate Markdown file using partial templates and YAML configuration",
+  "description": "Generate Markdown files using partial templates and YAML configuration",
   "main": "index.js",
   "scripts": {
     "test": "cd test && mocha ./test.js"
