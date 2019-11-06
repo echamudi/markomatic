@@ -15,5 +15,5 @@ module.exports = function (yamlPath) {
 
     const res = nunjucks.renderString(templateText, doc.markomatic.variables);
 
-    return res
+    return res;
 }
