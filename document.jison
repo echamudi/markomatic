@@ -1,5 +1,3 @@
-/* description: Parses words out of html, ignoring html in the parse, but returning it in the end */
-
 /* lexical grammar */
 %lex
 %%
