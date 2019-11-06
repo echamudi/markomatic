@@ -1,6 +1,6 @@
 # Markomatic
 
-(WIP - Experimental) Generate Markdown files using partial templates and YAML configuration
+Generate Markdown files using partial templates and YAML configuration
 
 # License
 
