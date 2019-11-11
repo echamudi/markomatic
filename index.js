@@ -39,9 +39,11 @@ module.exports = function (yamlFilePath) {
     // Collect template directories from the configuration yaml
     const templateDirs = [];
 
-    yamlObject.markomatic.templateDirs.forEach((templateDir) => {
-        templateDirs.push(path.join(yamlDir, templateDir));
-    });
+    if (Array.isArray(yamlObject.markomatic.templateDirs)) {
+        yamlObject.markomatic.templateDirs.forEach((templateDir) => {
+            templateDirs.push(path.join(yamlDir, templateDir));
+        });
+    }
 
     // Configure nunjucks
     nunjucks.configure(
