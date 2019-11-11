@@ -1,6 +1,6 @@
 {
   "name": "markomatic",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Generate Markdown files using partial templates and YAML configuration",
   "main": "index.js",
   "scripts": {
@@ -29,6 +29,8 @@
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "markomatic-template-test-1": "file:test/modules/markomatic-template-test-1",
+    "markomatic-template-test-2": "file:test/modules/markomatic-template-test-2",
     "mocha": "^6.2.2"
   }
 }
