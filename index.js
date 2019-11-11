@@ -129,9 +129,13 @@ function markomatic(yamlFilePath) {
     nunjucks.configure(
         // Include lookup order
         [
-            inputDir, // 1. Same folder as input file
-            yamlDir, // 2. Same folder as yaml file
-            ...templateDirs, // 3. templateDirs written in yaml file
+            // 1. Same folder as yaml file
+            yamlDir,
+            // 2. Same folder as input file for input mode
+            //     or module index.js for template module mode
+            inputDir,
+            // 3. templateDirs written in yaml file, dirs relative to yaml file
+            ...templateDirs,
         ],
         {
             autoescape: false, // Don't use HTML character
