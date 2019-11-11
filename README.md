@@ -1,6 +1,6 @@
 # Markomatic
 
-Generate Markdown files using partial templates and YAML configuration
+(WIP) Generate Markdown files using partial templates and YAML configuration
 
 ## Development
 
