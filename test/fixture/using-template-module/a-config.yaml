@@ -1,6 +1,6 @@
 markomatic :
   version : 1
   useModule : markomatic-template-test-1
-  output : ../../result/complete-test.md
+  output : ../../result/temp-result.md
   variables :
     name : John

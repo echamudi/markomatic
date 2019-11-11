@@ -5,7 +5,7 @@ markomatic :
   templateDirs : 
     - ./partials
   input: ./my-profile.md
-  output : ../../../result/complete-test.md
+  output : ../../../result/temp-result.md
   variables :
     name : Ezzat
     fruits :

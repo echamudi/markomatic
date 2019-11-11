@@ -1,5 +1,5 @@
 markomatic :
   version : 1
   input: ./template.md
-  output : ../../result/complete-test.md
+  output : ../../result/temp-result.md
   variables :
