@@ -2,13 +2,11 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const nunjucks = require('nunjucks');
 const path = require('path');
-const os = require('os');
 
 const EOL_MODE_CRLF = 0;
 const EOL_MODE_LF = 1;
 
-module.exports = function (yamlFilePath) {
-
+function markomatic(yamlFilePath) {
     // Get config yaml as object
     const yamlDir = path.dirname(yamlFilePath);
     const yamlObject = yaml.safeLoad(fs.readFileSync(yamlFilePath, 'utf8'));
@@ -31,10 +29,10 @@ module.exports = function (yamlFilePath) {
 
     let eolMode;
     if (lfCount < crlfCount) {
-        eolMode = EOL_MODE_CRLF
+        eolMode = EOL_MODE_CRLF;
     } else {
         eolMode = EOL_MODE_LF;
-    };
+    }
 
     // Collect template directories from the configuration yaml
     const templateDirs = [];
@@ -49,23 +47,24 @@ module.exports = function (yamlFilePath) {
     nunjucks.configure(
         // Include lookup order
         [
-            inputDir,       // 1. Same folder as input file
-            yamlDir,        // 2. Same folder as yaml file
-            ...templateDirs,    // 3. templateDirs written in yaml file
+            inputDir, // 1. Same folder as input file
+            yamlDir, // 2. Same folder as yaml file
+            ...templateDirs, // 3. templateDirs written in yaml file
         ],
         {
-            autoescape: false // Don't use HTML character
-        });
+            autoescape: false, // Don't use HTML character
+        },
+    );
 
     // Run nunjucks
     let renderedText = nunjucks.render(inputFileName, yamlObject.markomatic.variables);
 
     // Fix  CRLF or LF
     if (eolMode === EOL_MODE_CRLF) {
-        renderedText = renderedText.replace(/\r\n/g, "\n");
-        renderedText = renderedText.replace(/\n/g, "\r\n");
+        renderedText = renderedText.replace(/\r\n/g, '\n');
+        renderedText = renderedText.replace(/\n/g, '\r\n');
     } else {
-        renderedText = renderedText.replace(/\r\n/g, "\n");
+        renderedText = renderedText.replace(/\r\n/g, '\n');
     }
 
     // Write file
@@ -74,3 +73,5 @@ module.exports = function (yamlFilePath) {
 
     return renderedText;
 }
+
+module.exports.markomatic = markomatic;
