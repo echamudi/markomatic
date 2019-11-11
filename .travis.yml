@@ -12,6 +12,8 @@ install:
   - npm install --only=prod
   - npm link --only=prod
   - npm install -g mocha
+  - npm install -g file:test/modules/markomatic-template-test-1
+  - npm install -g file:test/modules/markomatic-template-test-2
 
 script:
   - npm test
