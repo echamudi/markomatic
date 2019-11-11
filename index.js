@@ -6,6 +6,12 @@ const path = require('path');
 const EOL_MODE_CRLF = 0;
 const EOL_MODE_LF = 1;
 
+/**
+ * Markomatic
+ * Create md file from template and yaml config
+ * @param {string} yamlFilePath Path directory of the configuration yaml
+ * @returns {string} rendered result
+ */
 function markomatic(yamlFilePath) {
     // Get config yaml as object
     const yamlDir = path.dirname(yamlFilePath);
@@ -24,6 +30,16 @@ function markomatic(yamlFilePath) {
     } else {
         console.log(yamlMarkomatic.templateDirs);
         throw new Error('‍templateDirs is wrong...');
+    }
+
+    if (typeof yamlMarkomatic.input !== 'string') {
+        console.log(yamlMarkomatic.input);
+        throw new Error('input is wrong...');
+    }
+
+    if (typeof yamlMarkomatic.output !== 'string') {
+        console.log(yamlMarkomatic.output);
+        throw new Error('output is wrong...');
     }
 
     // Get in put and output data
@@ -47,10 +63,11 @@ function markomatic(yamlFilePath) {
     }
 
     // Collect template directories from the configuration yaml
+    /** @type { Array.<string> } */
     const templateDirs = [];
 
     if (Array.isArray(yamlMarkomatic.templateDirs)) {
-        yamlMarkomatic.templateDirs.forEach((templateDir) => {
+        yamlMarkomatic.templateDirs.forEach((/** @type {string} */ templateDir) => {
             templateDirs.push(path.join(yamlDir, templateDir));
         });
     }
