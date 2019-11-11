@@ -2,6 +2,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const nunjucks = require('nunjucks');
 const path = require('path');
+const os = require('os');
 
 module.exports = function (yamlFilePath) {
     const yamlDir = path.dirname(yamlFilePath);
@@ -14,6 +15,10 @@ module.exports = function (yamlFilePath) {
     const inputFilePath = path.join(yamlDir, yamlObject.markomatic.input);
     const inputFileName = path.parse(inputFilePath).base;
     const inputDir = path.dirname(inputFilePath);
+    const inputText = fs.readFileSync(inputFilePath, 'utf8');
+
+    console.log(inputText.split('\r\n').length - 1);
+
     const outputFilePath = path.join(yamlDir, yamlObject.markomatic.output);
     const outputDir = path.dirname(outputFilePath);
     const templateDirs = [];
