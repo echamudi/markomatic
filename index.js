@@ -3,36 +3,87 @@ const yaml = require('js-yaml');
 const nunjucks = require('nunjucks');
 const path = require('path');
 
-module.exports = function (yamlFilePath) {
+const EOL_MODE_CRLF = 0;
+const EOL_MODE_LF = 1;
+
+function markomatic(yamlFilePath) {
+    // Get config yaml as object
     const yamlDir = path.dirname(yamlFilePath);
-
     const yamlObject = yaml.safeLoad(fs.readFileSync(yamlFilePath, 'utf8'));
+    const yamlMarkomatic = yamlObject.markomatic;
 
-    const inputFilePath = path.join(yamlDir, yamlObject.markomatic.input);
+    // Check yaml validity
+    if (yamlMarkomatic === undefined) throw new Error('The provided yaml file doesn\'t have markomatic property.');
+
+    if (typeof yamlMarkomatic.templateDirs === 'string') {
+        yamlMarkomatic.templateDirs = [yamlMarkomatic.templateDirs];
+    } else if (yamlMarkomatic.templateDirs === undefined) {
+        yamlMarkomatic.templateDirs = [];
+    } else if (Array.isArray(yamlMarkomatic.templateDirs)) {
+        // Good
+    } else {
+        console.log(yamlMarkomatic.templateDirs);
+        throw new Error('‍templateDirs is wrong...');
+    }
+
+    // Get in put and output data
+    const inputFilePath = path.join(yamlDir, yamlMarkomatic.input);
     const inputFileName = path.parse(inputFilePath).base;
     const inputDir = path.dirname(inputFilePath);
-    const outputFilePath = path.join(yamlDir, yamlObject.markomatic.output);
+    const inputText = fs.readFileSync(inputFilePath, 'utf8');
+
+    const outputFilePath = path.join(yamlDir, yamlMarkomatic.output);
     const outputDir = path.dirname(outputFilePath);
+
+    // Decide CRLF and LF mode by how much CRLF or LF occur in the input file
+    const crlfCount = inputText.split('\r\n').length - 1;
+    const lfCount = inputText.split('\n').length - crlfCount;
+
+    let eolMode;
+    if (lfCount < crlfCount) {
+        eolMode = EOL_MODE_CRLF;
+    } else {
+        eolMode = EOL_MODE_LF;
+    }
+
+    // Collect template directories from the configuration yaml
     const templateDirs = [];
 
-    yamlObject.markomatic.templateDirs.forEach((templateDir) => {
-        templateDirs.push(path.join(yamlDir, templateDir));
-    });
+    if (Array.isArray(yamlMarkomatic.templateDirs)) {
+        yamlMarkomatic.templateDirs.forEach((templateDir) => {
+            templateDirs.push(path.join(yamlDir, templateDir));
+        });
+    }
 
+    // Configure nunjucks
     nunjucks.configure(
         // Include lookup order
         [
-            inputDir,       // 1. Same folder as input file
-            yamlDir,        // 2. Same folder as yaml file
-            ...templateDirs,    // 3. templateDirs written in yaml file
+            inputDir, // 1. Same folder as input file
+            yamlDir, // 2. Same folder as yaml file
+            ...templateDirs, // 3. templateDirs written in yaml file
         ],
         {
-            autoescape: false // Don't use HTML character
-        });
-    const renderedText = nunjucks.render(inputFileName, yamlObject.markomatic.variables);
+            autoescape: false, // Don't use HTML character
+        },
+    );
 
+    // Run nunjucks
+    let renderedText = nunjucks.render(inputFileName, yamlMarkomatic.variables);
+
+    // Fix  CRLF or LF
+    if (eolMode === EOL_MODE_CRLF) {
+        renderedText = renderedText.replace(/\r\n/g, '\n');
+        renderedText = renderedText.replace(/\n/g, '\r\n');
+    } else {
+        renderedText = renderedText.replace(/\r\n/g, '\n');
+    }
+
+    // Write file
     fs.mkdirSync(outputDir, { recursive: true });
     fs.writeFileSync(outputFilePath, renderedText);
 
     return renderedText;
 }
+
+module.exports = markomatic;

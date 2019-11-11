@@ -4,10 +4,10 @@ markomatic :
   # All directories and file paths are relative to yaml file
   templateDirs : 
     - ./partials
-  input: ./ezzat-chamudi.md
+  input: ./my-profile.md
   output : ../../../result/complete-test.md
   variables :
-    name : John Doe
+    name : Ezzat
     fruits :
       - Apple
       - Orange
