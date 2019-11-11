@@ -9,13 +9,11 @@ os:
   - windows
 
 install:
-  - npm install --only=prod
+  - npm install file:test/modules/markomatic-template-test-1 --save-prod
+  - npm install file:test/modules/markomatic-template-test-2 --save-prod
+  - npm prune --production
   - npm link --only=prod
   - npm install -g mocha
-  - cd test
-  - npm install file:modules/markomatic-template-test-1
-  - npm install file:modules/markomatic-template-test-2
-  - cd ..
 
 script:
   - npm test
