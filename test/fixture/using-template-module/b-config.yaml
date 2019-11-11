@@ -1,0 +1,6 @@
+markomatic :
+  version : 1
+  useModule : markomatic-template-test-2
+  templateDirs : 
+    - ./partials
+  output : ../../result/temp-result.md

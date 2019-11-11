@@ -70,6 +70,14 @@ describe('Markomatic!', function () {
                 fs.readFileSync('./fixture/using-template-module/a-expected.md'),
             );
         });
+
+        it('passes test B', function () {
+            execSync('markomatic ./fixture/using-template-module/b-config.yaml', execSyncProp);
+            assert.deepStrictEqual(
+                fs.readFileSync('./result/temp-result.md'),
+                fs.readFileSync('./fixture/using-template-module/b-expected.md'),
+            );
+        });
     });
 
     describe('Yaml validation', function () {
