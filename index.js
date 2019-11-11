@@ -74,4 +74,4 @@ function markomatic(yamlFilePath) {
     return renderedText;
 }
 
-module.exports.markomatic = markomatic;
+module.exports = markomatic;
