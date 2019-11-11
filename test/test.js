@@ -4,7 +4,6 @@ const path = require('path');
 const assert = require('assert');
 
 const markomatic = require('../index');
-const os = require('os');
 
 describe('Markomatic!', function () {
 
@@ -16,15 +15,8 @@ describe('Markomatic!', function () {
     });
 
     it('extracts correctly using markomatic as node module', function () {
-        let expected = fs.readFileSync('./fixture/complete-test/expected/result.md', 'utf8');
-        let result = markomatic('./fixture/complete-test/source/markomatic.yaml');
-
-        if (os.platform() === 'win32') {
-            result = result.replace(/\r/g, '');
-            expected = expected.replace(/\r/g, '');
-        }
-
-        assert.deepStrictEqual(result, expected);
+        markomatic('./fixture/complete-test/source/markomatic.yaml');
+        assert.deepStrictEqual(fs.readFileSync('./fixture/complete-test/expected/result.md'), fs.readFileSync('./result/complete-test.md'));
     });
 
     it('extracts correctly using markomatic as cli tool', function () {
@@ -36,16 +28,7 @@ describe('Markomatic!', function () {
         };
 
         execSync('markomatic ./fixture/complete-test/source/markomatic.yaml', execSyncProp);
-
-        let expected = fs.readFileSync('./fixture/complete-test/expected/result.md', 'utf-8');
-        let result = fs.readFileSync('./result/complete-test.md', 'utf-8');
-
-        if (os.platform() === 'win32') {
-            result = result.replace(/\r/g, '');
-            expected = expected.replace(/\r/g, '');
-        }
-
-        assert.deepStrictEqual(result, expected);
+        assert.deepStrictEqual(fs.readFileSync('./fixture/complete-test/expected/result.md'), fs.readFileSync('./result/complete-test.md'));
     });
 
     it('extracts correctly using markomatic as cli tool (2)', function () {
@@ -57,16 +40,7 @@ describe('Markomatic!', function () {
         };
 
         execSync('cd ./fixture/complete-test/source/ && markomatic markomatic.yaml', execSyncProp);
-
-        let expected = fs.readFileSync('./fixture/complete-test/expected/result.md', 'utf-8');
-        let result = fs.readFileSync('./result/complete-test.md', 'utf-8');
-
-        if (os.platform() === 'win32') {
-            result = result.replace(/\r/g, '');
-            expected = expected.replace(/\r/g, '');
-        }
-
-        assert.deepStrictEqual(result, expected);
+        assert.deepStrictEqual(fs.readFileSync('./fixture/complete-test/expected/result.md'), fs.readFileSync('./result/complete-test.md'));
     });
 
     describe('Yaml completion test', function() {
@@ -77,5 +51,5 @@ describe('Markomatic!', function () {
                 new Error('The provided yaml file doesn\'t have markomatic property.')
             );
         });
-    });
+    })
 });
