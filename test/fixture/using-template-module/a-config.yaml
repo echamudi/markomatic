@@ -1,0 +1,6 @@
+markomatic :
+  version : 1
+  useModule : markomatic-template-test-1
+  output : ../../result/complete-test.md
+  variables :
+    name : John
