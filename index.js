@@ -6,8 +6,8 @@ const path = require('path');
 const EOL_MODE_CRLF = 0;
 const EOL_MODE_LF = 1;
 
-const SOURCE_MODE_MODULE = 2;
-const SOURCE_MODE_INPUT = 4;
+// const SOURCE_MODE_MODULE = 2;
+// const SOURCE_MODE_INPUT = 4;
 
 /**
  * Markomatic
@@ -23,7 +23,7 @@ function markomatic(yamlFilePath) {
 
     /** @type { number } */ let eolMode;
 
-    /** @type { number } */ let sourceMode;
+    // /** @type { number } */ let sourceMode;
 
     /** @type { string } */ let inputModule;
     /** @type { string } */ let inputDir;
@@ -39,7 +39,7 @@ function markomatic(yamlFilePath) {
         console.log('useModule:', yamlMarkomatic.useModule);
         throw new Error('Please use either input or useModule only...');
     } else if (yamlMarkomatic.useModule !== undefined) {
-        sourceMode = SOURCE_MODE_MODULE;
+        // sourceMode = SOURCE_MODE_MODULE;
 
         if (typeof yamlMarkomatic.useModule !== 'string') {
             console.log(yamlMarkomatic.useModule);
@@ -58,7 +58,7 @@ function markomatic(yamlFilePath) {
 
         inputText = fs.readFileSync(inputFilePath, 'utf8');
     } else if (yamlMarkomatic.input !== undefined) {
-        sourceMode = SOURCE_MODE_INPUT;
+        // sourceMode = SOURCE_MODE_INPUT;
 
         if (typeof yamlMarkomatic.input !== 'string') {
             console.log(yamlMarkomatic.input);
