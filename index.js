@@ -10,17 +10,29 @@ function markomatic(yamlFilePath) {
     // Get config yaml as object
     const yamlDir = path.dirname(yamlFilePath);
     const yamlObject = yaml.safeLoad(fs.readFileSync(yamlFilePath, 'utf8'));
+    const yamlMarkomatic = yamlObject.markomatic;
 
     // Check yaml validity
-    if (yamlObject.markomatic === undefined) throw new Error('The provided yaml file doesn\'t have markomatic property.');
+    if (yamlMarkomatic === undefined) throw new Error('The provided yaml file doesn\'t have markomatic property.');
+
+    if (typeof yamlMarkomatic.templateDirs === 'string') {
+        yamlMarkomatic.templateDirs = [yamlMarkomatic.templateDirs];
+    } else if (yamlMarkomatic.templateDirs === undefined) {
+        yamlMarkomatic.templateDirs = [];
+    } else if (Array.isArray(yamlMarkomatic.templateDirs)) {
+        // Good
+    } else {
+        console.log(yamlMarkomatic.templateDirs);
+        throw new Error('‍templateDirs is wrong...');
+    }
 
     // Get in put and output data
-    const inputFilePath = path.join(yamlDir, yamlObject.markomatic.input);
+    const inputFilePath = path.join(yamlDir, yamlMarkomatic.input);
     const inputFileName = path.parse(inputFilePath).base;
     const inputDir = path.dirname(inputFilePath);
     const inputText = fs.readFileSync(inputFilePath, 'utf8');
 
-    const outputFilePath = path.join(yamlDir, yamlObject.markomatic.output);
+    const outputFilePath = path.join(yamlDir, yamlMarkomatic.output);
     const outputDir = path.dirname(outputFilePath);
 
     // Decide CRLF and LF mode by how much CRLF or LF occur in the input file
@@ -37,8 +49,8 @@ function markomatic(yamlFilePath) {
     // Collect template directories from the configuration yaml
     const templateDirs = [];
 
-    if (Array.isArray(yamlObject.markomatic.templateDirs)) {
-        yamlObject.markomatic.templateDirs.forEach((templateDir) => {
+    if (Array.isArray(yamlMarkomatic.templateDirs)) {
+        yamlMarkomatic.templateDirs.forEach((templateDir) => {
             templateDirs.push(path.join(yamlDir, templateDir));
         });
     }
@@ -57,7 +69,7 @@ function markomatic(yamlFilePath) {
     );
 
     // Run nunjucks
-    let renderedText = nunjucks.render(inputFileName, yamlObject.markomatic.variables);
+    let renderedText = nunjucks.render(inputFileName, yamlMarkomatic.variables);
 
     // Fix  CRLF or LF
     if (eolMode === EOL_MODE_CRLF) {
