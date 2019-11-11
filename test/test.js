@@ -43,6 +43,11 @@ describe('Markomatic!', function () {
         assert.deepStrictEqual(fs.readFileSync('./fixture/complete-test/expected/result.md'), fs.readFileSync('./result/complete-test.md'));
     });
 
+    it('keeps \\r\\n and \\n', function () {
+        markomatic('./fixture/crlf-lf-test/markomatic.yaml');
+        assert.deepStrictEqual(fs.readFileSync('./fixture/crlf-lf-test/expected.md'), fs.readFileSync('./result/complete-test.md'));
+    });
+
     describe('Yaml completion test', function() {
         it('throws error when the config doesn\'t contain markomatic prop', function() {
             assert.throws(() => {
