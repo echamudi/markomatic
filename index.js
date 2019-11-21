@@ -1,3 +1,6 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
+
 const fs = require('fs');
 const yaml = require('js-yaml');
 const nunjucks = require('nunjucks');
@@ -48,7 +51,7 @@ function markomatic(yamlFilePath) {
 
         inputModule = yamlMarkomatic.useModule;
         inputDir = path.dirname(require.resolve(inputModule));
-        inputFileName = 'index.md';
+        inputFileName = require(inputModule).input;
         inputFilePath = path.join(inputDir, inputFileName);
 
         if (!fs.existsSync(inputFilePath)) {
