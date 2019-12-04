@@ -42,7 +42,7 @@ Run the markomatic generator
 $ markomatic ./markomatic
 ```
 
-That's all! check the result at `./document.md`
+That's all! Check the output at `./document.md`
 ```md
 # Hello
 
