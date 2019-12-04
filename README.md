@@ -1,6 +1,63 @@
 # Markomatic
 
-(WIP) Generate Markdown files using partial templates and YAML configuration
+Generate Markdown files using partial templates and YAML configuration
+
+## Usage
+
+Install markomatic
+```
+npm install -g markomatic
+```
+
+Create your template file, e.g. `document.template.md`
+```md
+# Hello
+
+It's {{ name }}, I like {{ hobby }}.
+
+## Fruits
+
+My favourite fruits are:
+{% for fruit in fruits %}
+    - {{ fruit }} {% endfor %}
+```
+
+Create your markomatic config file, e.g. `markomatic.yaml`
+```yaml
+markomatic :
+    input: ./document.template.md
+    output : ./document.md
+    variables :
+        name : John
+        hobby : programming
+        fruits :
+            - Apple
+            - Orange
+            - Avocado
+            - Melon
+```
+
+Run the markomatic generator
+```sh
+$ markomatic ./markomatic
+```
+
+That's all! check the result at `./document.md`
+```md
+# Hello
+
+It's John, I like programming.
+
+## Fruits
+
+My favourite fruits are:
+
+    - Apple 
+    - Orange 
+    - Avocado 
+    - Melon 
+
+```
 
 ## Development
 
@@ -9,8 +66,9 @@
 | master | [![Build Status](https://travis-ci.org/ezhmd/markomatic.svg?branch=master)](https://travis-ci.org/ezhmd/markomatic) |
 | develop | [![Build Status](https://travis-ci.org/ezhmd/markomatic.svg?branch=develop)](https://travis-ci.org/ezhmd/markomatic) |
 
+The development of this project is following [gitflow](https://github.com/nvie/gitflow) branching model.
 
-# License
+## License
 
 Copyright © Ezzat Chamudi
 
