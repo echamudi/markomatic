@@ -63,8 +63,8 @@ My favourite fruits are:
 
 | Branch | Status |
 | - | - |
-| master | [![Build Status](https://travis-ci.org/ezhmd/markomatic.svg?branch=master)](https://travis-ci.org/ezhmd/markomatic) |
-| develop | [![Build Status](https://travis-ci.org/ezhmd/markomatic.svg?branch=develop)](https://travis-ci.org/ezhmd/markomatic) |
+| master | [![Build Status](https://travis-ci.org/echamudi/markomatic.svg?branch=master)](https://travis-ci.org/echamudi/markomatic) |
+| develop | [![Build Status](https://travis-ci.org/echamudi/markomatic.svg?branch=develop)](https://travis-ci.org/echamudi/markomatic) |
 
 The development of this project is following [gitflow](https://github.com/nvie/gitflow) branching model.
 
