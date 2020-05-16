@@ -1,6 +1,6 @@
 {
   "name": "markomatic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate Markdown files using partial templates and YAML configuration",
   "main": "index.js",
   "scripts": {
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://ezhmd@github.com/ezhmd/markomatic.git"
+    "url": "git+https://echamudi@github.com/echamudi/markomatic.git"
   },
   "author": "Ezzat Chamudi",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/ezhmd/markomatic/issues"
+    "url": "https://github.com/echamudi/markomatic/issues"
   },
   "bin": "cli.js",
-  "homepage": "https://github.com/ezhmd/markomatic#readme",
+  "homepage": "https://github.com/echamudi/markomatic#readme",
   "dependencies": {
     "js-yaml": "^3.13.1",
     "nunjucks": "^3.2.0"

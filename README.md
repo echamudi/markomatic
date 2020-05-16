@@ -42,7 +42,7 @@ Run the markomatic generator
 $ markomatic ./markomatic
 ```
 
-That's all! check the result at `./document.md`
+That's all! Check the output at `./document.md`
 ```md
 # Hello
 
@@ -58,13 +58,21 @@ My favourite fruits are:
     - Melon 
 
 ```
+## Contributing
+
+This project is following [git-flow branching model](https://github.com/echamudi/echamudi-docs/raw/master/git-strategy/gitflow.pdf). 
+- Please create a branch from `develop`.
+- Name it something descriptive other than `master`, `develop`, `release-*`, or `hotfix-*`.
+- Open a pull request to `develop`.
+
+Make sure your contributions are compatible with the license of this code.
 
 ## Development
 
 | Branch | Status |
 | - | - |
-| master | [![Build Status](https://travis-ci.org/ezhmd/markomatic.svg?branch=master)](https://travis-ci.org/ezhmd/markomatic) |
-| develop | [![Build Status](https://travis-ci.org/ezhmd/markomatic.svg?branch=develop)](https://travis-ci.org/ezhmd/markomatic) |
+| master | [![Build Status](https://travis-ci.org/echamudi/markomatic.svg?branch=master)](https://travis-ci.org/echamudi/markomatic) |
+| develop | [![Build Status](https://travis-ci.org/echamudi/markomatic.svg?branch=develop)](https://travis-ci.org/echamudi/markomatic) |
 
 The development of this project is following [gitflow](https://github.com/nvie/gitflow) branching model.
 
