@@ -1,6 +1,6 @@
 {
   "name": "markomatic",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate Markdown files using partial templates and YAML configuration",
   "main": "index.js",
   "scripts": {

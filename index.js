@@ -21,8 +21,8 @@ const EOL_MODE_LF = 1;
 function markomatic(yamlFilePath) {
     // Get config yaml as object
     /** @type { string } */ const yamlDir = path.dirname(yamlFilePath);
-    /** @type { Object } */ const yamlObject = yaml.safeLoad(fs.readFileSync(yamlFilePath, 'utf8'));
-    /** @type { Object } */ const yamlMarkomatic = yamlObject.markomatic;
+    /** @type { Object<string, any> } */ const yamlObject = yaml.safeLoad(fs.readFileSync(yamlFilePath, 'utf8'));
+    /** @type { Object<string, any> } */ const yamlMarkomatic = yamlObject.markomatic;
 
     /** @type { number } */ let eolMode;
 

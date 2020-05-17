@@ -60,7 +60,7 @@ My favourite fruits are:
 ```
 ## Contributing
 
-This project is following [git-flow branching model](https://github.com/echamudi/echamudi-docs/raw/master/git-strategy/gitflow.pdf). 
+This project is following [git-flow branching model](https://github.com/echamudi/echamudi-docs/blob/master/git-strategy/gitflow.png). 
 - Please create a branch from `develop`.
 - Name it something descriptive other than `master`, `develop`, `release-*`, or `hotfix-*`.
 - Open a pull request to `develop`.
@@ -78,8 +78,8 @@ The development of this project is following [gitflow](https://github.com/nvie/g
 
 ## License
 
-Copyright © Ezzat Chamudi
+Copyright © 2019 Ezzat Chamudi
 
 Markomatic code is licensed under [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/). 
 
-Libraries, dependencies, and tools used in this project are tied with their own licenses respectively.
+Libraries, dependencies, and tools used in this project are tied with their licenses.
